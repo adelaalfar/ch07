@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /:id/items               controllers.Product.list(id:Long)
+GET     /		                 controllers.Product.index()
+GET     /products	             controllers.Product.all()
+GET     /product	             controllers.Product.edit(id: models.Product)
+GET	    /product/new             controllers.Product.newInstance()
+#GET     /product/:ean	         controllers.Product.edit(ean: models.Product)
+GET     /picture/:ean	         controllers.Product.picture(ean: String)
+POST    /product/save            controllers.Product.save()
+GET     /product/save            controllers.Product.save()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

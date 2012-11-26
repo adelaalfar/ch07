@@ -1,0 +1,54 @@
+@(productForm: Form[models.Product])
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit @productForm("name").valueOr("New") product</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")"/>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        @if(flash.containsKey("success")) {
+            <div class="alert alert-success">
+                <strong></strong> @flash.get("success")
+            </div>
+        } 
+        <form class="register form-horizontal" action="@routes.Product.save()" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <input type="hidden" value="@productForm("id").value" name="id">
+                <legend style="margin-left: 20px">Edit @productForm("name").valueOr("New") product</legend>
+               
+                <div class="control-group @if(productForm("name").hasErrors){ error }">
+                    <div class="controls">
+                        <input type="text" value="@productForm("name").value" name="name" placeholder="Product name"  >
+                        <p class="help-inline"><small>Required</small></p>
+                    </div>
+                </div>
+                <div class="control-group @if(productForm("ean").hasErrors){ error }">
+                    <div class="controls">
+                        <input type="text" value="@productForm("ean").value" name="ean" placeholder="Product ean"  >
+                        <p class="help-inline"><small>Required</small></p>
+                    </div>
+                </div>
+                <div class="control-group @if(productForm("description").hasErrors){ error }">
+                        <div class="controls">
+                            <textarea type="text" name="description" placeHolder="Enter the product description">@productForm("description").value</textarea>
+                           
+                        </div>
+                  </div>
+                
+                  <div class="control-group ">
+                        <div class="controls">
+                              <input name="tags[0].id" value="1" type="checkbox" @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null && productForm("tags[" + i + "]").value == "1") { checked }}> Steal
+                              <input name="tags[1].id" value="2" type="checkbox" @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null && productForm("tags[" + i + "]").value == "2") { checked }}> Plastic
+                              <input name="tags[2].id" value="3" type="checkbox" @for(i <- 0 to 2) { @if(productForm("tags[" + i + "]").value!=null && productForm("tags[" + i + "]").value == "3") { checked }}> Metal
+                        </div>
+                    </div>
+            </fieldset>
+            <div class="form-actions">
+                <input type="submit" value="@if(productForm("name").value!=null) { Save } else { Create } " class="btn btn-primary">
+            </div>
+        </form>
+    </body>
+</html>
