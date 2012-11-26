@@ -9,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 import play.mvc.*;
 
 import play.data.*;
+import static play.data.Form.form;
 import play.*;
 import views.html.*;
 import java.lang.annotation.*;
@@ -24,7 +25,7 @@ public class Product extends Controller {
     
     
   public static Result index() {
-      return redirect(routes.Product.list(1));
+      return redirect(routes.Product.all());
   }
 
   public static Result list(Long warehouseId) {

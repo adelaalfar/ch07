@@ -6,8 +6,10 @@ object ApplicationBuild extends Build {
 
     val appName         = "book"
     val appVersion      = "1.0"
-
     val appDependencies = Seq(
+      javaCore,
+      javaJdbc,
+      javaEbean,
       // Add your project dependencies here,
        "commons-io" % "commons-io" % "2.3",
        "commons-lang" % "commons-lang" % "2.6"

@@ -1,0 +1,3 @@
+[0m[[0minfo[0m] [0mCompiling 1 Java source to /Users/nicolasleroux/Projects/Personal/sample_book/ch07 forms/target/scala-2.10/classes...[0m
+[0m[[33mwarn[0m] [0mNote: /Users/nicolasleroux/Projects/Personal/sample_book/ch07 forms/app/models/Product.java uses unchecked or unsafe operations.[0m
+[0m[[33mwarn[0m] [0mNote: Recompile with -Xlint:unchecked for details.[0m

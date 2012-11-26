@@ -22,12 +22,12 @@ public class Product extends Model implements play.mvc.QueryStringBindable<Produ
 
  @Override
  public String unbind(String key) {
-   return this.ean;
+   return "id=" + this.id.toString();
  }
 
  @Override
  public String javascriptUnbind() {
-   return this.ean;
+   return this.id.toString();
  }
 
     @Id @GeneratedValue
